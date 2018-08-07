@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <script>
+        var input1 = prompt("첫번째 수를 입력해주세요!");
+        var ope = prompt("연산자를 '+, -, *, /' 중에 하나만 입력해주세요!")
+        var input2 = prompt("두번째 수를 입력해 주세요!");
+
+        var n1 = Number(input1);
+        var n2 = Number(input2);
+
+
+        switch (ope) {
+            case '+':
+                var plus = n1 + n2;
+                console.log("덧셈한 값은 " + plus + " 입니다.");
+                break;
+            case '-':
+                var minus = n1 - n2;
+                console.log("뺼셈한 값은 " + minus + " 입니다.");
+                break;
+            case '*':
+                var multiple = n1 * n2;
+                console.log("곱셈한 값은 " + multiple + " 입니다.");
+                break;
+            case '/':
+                var division = n1 / n2;
+                console.log("나눗셈한 값은 " + division + " 입니다.");
+                break;
+            default:
+                break;
+        }
+    </script>
+</body>
+
+</html>
