@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+
+<body>
+    <script>
+        // 사용자가 입력한 수들의 갯수와 합을 구하는 프로그램을 작성해 봅시다. (단 0을 입력받으면 입력 종료)
+
+        var sum = 0;
+        var input = 0;
+        var num = 0;
+
+        while (true) {
+            input = Number(prompt("숫자를 입력해주세요!(0을 입력하시면 종료됩니다.)"));
+            sum += input;
+            if (input === 0) {
+                break;
+            }
+            num++;
+        }
+        
+        console.log("입력하신 숫자의 개수는 " + num + "개, 합은 " + sum + "입니다.");
+    </script>
+</body>
+
+</html>
