@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>연습문제3</title>
+</head>
+
+<body>
+    <h1>소수 출력하기</h1>
+    <p>1부터
+        <input type="text" id="num" value="10000"> 사이의 소수를
+        <button onclick="numbers.execute()">출력</button>
+    </p>
+    <div id="prime"></div>
+    <script>
+        var numbers = {
+            "all": [],
+            "prime": [],
+            "isPrime": function (number) {
+                for (var i = 2; i < number; i++) {
+                    if (number % i === 0) {
+                        return false;
+                    }
+                }
+                return true;
+            },
+            "addPrime": function (number) {
+                this.prime.push(number);
+            },
+            "getAllPrimes": function () {
+                var output = "";
+                for (var i = 0; i < this.prime.length; i++) {
+                    output += this.prime[i] + "&emsp;";
+                    if (i % 30 === 3) {
+                        output += "<br>";
+                    }
+                }
+                return output;
+            },
+            "addAll": function (max_num) {
+                for (var i = 2; i <= max_num; i++) {
+                    this.all.push(i);
+                }
+            },
+            "execute": function () {
+                var num = document.getElementById("num").value;
+                this.addAll(num);
+                for (var i = 0; i < this.all.length; i++) {
+                    if (this.isPrime(this.all[i])) {
+                        this.addPrime(this.all[i]);
+                    }
+                }
+                document.getElementById("prime").innerHTML = this.getAllPrimes();
+            }
+        };
+    </script>
+</body>
+
+</html>
