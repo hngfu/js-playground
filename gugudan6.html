@@ -1,17 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
+
 <body>
+    <h1>반복문을 사용한 구구단 연습</h1>
+    출력할 단수:
+    <input type="text" id="num">
+    <br>
+    <button onclick="runGugudan()">확인</button>
+
+    <div id="gugudan"></div>
+
     <script>
-        var num = Number(window.prompt("몇단을 출력하실 건가요?"));
-        document.write("<h2>"+num+"단</h2>");
-        for(var i = 1;i<10;i++){
-            document.write(num+"*"+i+"="+num*i+"<br>");
+        function runGugudan() {
+            var num = document.getElementById("num").value;
+            var output = "<h2>" + num + "단</h2>";
+            for (var i = 1; i < 10; i++) {
+                output += num + "*" + i + "=" + num * i + "<br>"
+            }
+            document.getElementById("gugudan").innerHTML = output;
         }
     </script>
 </body>
+
 </html>
