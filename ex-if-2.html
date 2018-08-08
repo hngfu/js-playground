@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
+    <script>
+        var input = prompt("영어 문장을 입력해주세요!");
+
+        var inputUp = input.toUpperCase();
+        var inputLow = input.toLowerCase();
+
+        if(input===inputUp){
+            console.log(input+"은 대문자 문장입니다.");
+        }else if(input===inputLow){
+            console.log(input+"은 소문자 문장입니다.");
+        }else{
+            console.log(input+"은 보통 문장입니다.");
+        }
+
+    </script>
+</body>
+</html>
