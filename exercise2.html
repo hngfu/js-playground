@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+
+<body>
+    <script>
+        //해설 보기 전에 짠 코드
+
+        // //사용자가 입력한 숫자가 소수인지 아닌지 알려주는 프로그램을 작성해 봅시다.
+
+        // var inputNum = Number(prompt("소수 판별할 수를 입력해주세요!"));
+
+        // for (var i = 2; i <= inputNum; i++) {
+        //     if (inputNum === i) {
+        //         console.log(inputNum + "은 소수입니다.");
+        //         break;
+        //     }
+        //     if (inputNum % i === 0) {
+        //         console.log(inputNum + "은 소수가 아닙니다.");
+        //         break;
+        //     }
+        // }
+
+
+        //해설 본 후 다시 짠 코드
+        var inputNum = Number(prompt("소수 판별할 수를 입력해주세요!"));
+        var prime = true;
+
+        for (var i = 2; i < inputNum; i++) {
+            if (inputNum % i === 0) {
+                prime = false;
+                break;
+            }
+        }
+        if(prime === true){
+            console.log(inputNum+"은(는) 소수입니다.");
+        }else{
+            console.log(inputNum+"은(는) 소수가 아닙니다.");
+        }
+        
+    </script>
+</body>
+
+</html>
