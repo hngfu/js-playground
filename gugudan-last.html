@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>구구단 라스트</title>
+</head>
+
+<body>
+    <script>
+        var gugudan = {};
+        //숫자 입력 받기
+        gugudan.input = prompt("숫자를 입력해주세요. ex)8,7 - 팔칠단을 원할경우");
+        gugudan.num1 = Number(gugudan.input[0]);
+        gugudan.num2 = Number(gugudan.input[2]);
+
+        //구구단 만들기
+        gugudan.make = function (n) {
+            var result = [];
+            result[0] = "<div style = 'display:inline-block; margin:2em;'><h2>" + n + "단</h2>";
+            for (var i = 1; i <= this.num2; i++) {
+                result[i] = n + " x " + i + " = " + n * i + "<br>";
+            }
+            result[result.length] = "</div>";
+            return result;
+        }
+
+        //구구단 출력하기
+        gugudan.print = function () {
+            for (var i = 2; i <= this.num1; i++) {
+                var results = this.make(i);
+                for (var j = 0; j < results.length; j++) {
+                    document.write(results[j]);
+                }
+            }
+        }
+
+        gugudan.print();
+    </script>
+</body>
+
+</html>
