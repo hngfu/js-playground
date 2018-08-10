@@ -10,7 +10,7 @@
 
 <body>
     <h1>배열로 구현한 구구단</h1>
-    <script>
+    <!-- <script>
         var result = [];
         //2단부터 변수 'length'에 들어간 수의 단까지 출력
         var length = 9;
@@ -30,6 +30,31 @@
             document.write("<li>" + result[i] + "</li>");
             if (i % 9 === 9 - 1) {
                 document.write("</ul>");
+            }
+        }
+    </script> -->
+    <script>
+        var result = [];
+
+        for (var j = 2; j < 10; j++) {
+            var length = j;
+
+            //계산
+            for (var i = 0; i < 9; i++) {
+                result[i] = length * (i + 1);
+            }
+
+            //출력
+            document.write("<h2>" + length + "단</h2>");
+            for (var i = 0; i < 9; i++) {
+                var str = "";
+                str += length;
+                str += " x ";
+                str += (i + 1);
+                str += " = ";
+                str += result[i];
+                str += "<br>";
+                document.write(str);
             }
         }
     </script>
