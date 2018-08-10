@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>객체로 구현한 구구단</title>
+</head>
+
+<body>
+    <h1>객체로 구현한 구구단</h1>
+    <script>
+        var gugudan = {};
+
+        gugudan.cal = function (length) {
+            var results = [];
+            results[0] = "<div style = 'display:inline-block; margin:2em;'><h2>" + length + "단</h2>";
+            for (var i = 1; i < 10; i++) {
+                results[i] = length + " x " + i + " = " + length * i + "<br>";
+            }
+            results[10] = "</div>";
+            return results;
+        }
+
+        gugudan.print = function (results) {
+            for (var i = 0; i < results.length; i++) {
+                document.write(results[i]);
+            }
+        }
+
+        function main() {
+            for (var i = 2; i < 10; i++) {
+                gugudan.print(gugudan.cal(i));
+            }
+        }
+
+        main();
+    </script>
+</body>
+
+</html>
