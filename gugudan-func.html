@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>함수로 구현한 구구단</title>
+</head>
+
+<body>
+    <h1>함수로 구현한 구구단</h1>
+    <script>
+        function calculrate(num) {
+            var results = [];
+            for (var i = 0; i < 9; i++) {
+                results[i] = num * (i + 1);
+            }
+            return results;
+        }
+
+        function print(i, results) {
+            for (var j = 0; j < 9; j++) {
+                var str = "";
+                str += i;
+                str += " x ";
+                str += j + 1;
+                str += " = ";
+                str += results[j];
+                str += "<br>";
+                document.write(str);
+            }
+        }
+
+        function main() {
+            for (var i = 2; i < 10; i++) {
+                document.write("<div style = 'display:inline-block; margin:2em;'><h2>" + i + "단</h2>");
+                print(i, calculrate(i));
+                document.write("</div>");
+            }
+        }
+
+        main();
+    </script>
+</body>
+
+</html>
