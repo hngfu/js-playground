@@ -9,12 +9,27 @@
 </head>
 
 <body>
+    <h1 id = "name">참고자료없이 구현한 NN단</h1>
     <script>
         var gugudan = {};
-        //숫자 입력 받기
-        gugudan.input = prompt("숫자를 입력해주세요. ex)8,7 - 팔칠단을 원할경우");
-        gugudan.num1 = Number(gugudan.input[0]);
-        gugudan.num2 = Number(gugudan.input[2]);
+        gugudan.num = "";
+        gugudan.num1 = 0;
+        gugudan.num2 = 0;
+
+        //숫자 입력 받기(유효성검사)
+        gugudan.input = function () {
+            var check = true;
+            while (check) {
+                this.num = prompt("숫자를 입력해주세요. ex)8,7 - 팔칠단을 원할경우");
+                this.num1 = Number(this.num[0]);
+                this.num2 = Number(this.num[2]);
+                if (this.num1 > 0 && this.num1 < 10 && this.num2 > 0 && this.num2 < 10 && this.num[1] === ',' && this.num.length === 3) {
+                    check = false;
+                    continue;
+                }
+                alert('숫자,숫자 <- 의 형식으로 넣어주세요. 단, 가용 숫자 범위는 1~9입니다.');
+            }
+        }
 
         //구구단 만들기
         gugudan.make = function (n) {
@@ -29,6 +44,7 @@
 
         //구구단 출력하기
         gugudan.print = function () {
+            this.input();
             for (var i = 2; i <= this.num1; i++) {
                 var results = this.make(i);
                 for (var j = 0; j < results.length; j++) {
@@ -38,6 +54,8 @@
         }
 
         gugudan.print();
+        document.getElementById("name").innerHTML = "참고자료없이 구현한 " + gugudan.num + "단";
+
     </script>
 </body>
 
