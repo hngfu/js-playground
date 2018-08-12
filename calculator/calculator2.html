@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>값 입력 및 사칙연산 – 변수</title>
+</head>
+<body>
+    <h1>값 입력 및 사칙연산 – 변수</h1>
+    <input type = "text" id = "num1">
+    <select id = "ope">
+        <option value = "+">+</option>
+        <option value = "-">-</option>
+        <option value = "*">*</option>
+        <option value = "/">/</option>
+    </select>
+    <input type = "text" id = "num2">
+    <button onclick = "main()">=</button>
+    <p id = "out"></p>
+
+    <script>
+        function main(){
+            var num1 = Number(document.getElementById("num1").value);
+            var num2 = Number(document.getElementById("num2").value);
+            var ope = document.getElementById("ope").value;
+            console.log(num1,num2,ope);
+            var answer = 0;
+            
+            switch (ope) {
+                case "+":
+                answer = num1 + num2;
+                break;
+                case "-":
+                answer = num1 - num2;
+                break;
+                case "*":
+                answer = num1 * num2;
+                break;
+                case "/":
+                answer = Math.floor(num1 / num2);
+                break;
+            }
+
+            document.getElementById("out").innerHTML = answer;
+        }
+    </script>
+</body>
+</html>
