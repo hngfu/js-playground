@@ -1,3 +1,8 @@
+<!--
+    퍼즐만들기
+    hngfu(조재흥)
+    2018-08-13
+-->
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -18,43 +23,66 @@
 <body>
     <h1>퍼즐 구현 1: 레이아웃 구성</h1>
     <div id='puzzleArea'>
-        <h2 id='word'></h2>
+        <h2 id='word'>HELLO</h2>
     </div>
-    <div id="handler">
+    <div>
+        <button onclick="button.leftPush()">왼쪽밀기</button>
         <button onclick="button.insideOut()">뒤집기</button>
-        <button onclick="button.push()">밀어내기</button>
+        <button onclick="button.rightPush()">오른쪽밀기</button>
     </div>
-    <p>일치합니다.</p>
+    <p id='check'>일치합니다.</p>
 
     <script>
-        function input(str) {
-            var word = document.getElementById('word');
-            word.innerHTML = str;
-        }
-
-        var button = {};
-        button.word = "";
-        button.btn = [];
-        button.init = function () {
-            var word = document.getElementById('word').innerHTML;
-            var puzzleArea = document.getElementById('puzzleArea');
-            for (var i = 0; i < word.length; i++) {
-                this.btn[i] = document.createElement("button");
-                this.btn[i].innerHTML = word[i];
-                puzzleArea.appendChild(this.btn[i]);
+        //퍼즐객체 생성
+        var puzzle = {};
+        puzzle.word = document.getElementById('word').innerHTML;
+        puzzle.btnWord = puzzle.word.split("");
+        //퍼즐 초기화
+        puzzle.btnInit = function () {
+            var getArea = document.getElementById('puzzleArea');
+            var mkBtn = [];
+            for (var i = 0; i < this.btnWord.length; i++) {
+                mkBtn[i] = document.createElement("button");
+                mkBtn[i].innerHTML = this.btnWord[i];
+                mkBtn[i].id = 'btn' + i;
+                getArea.appendChild(mkBtn[i]);
             }
         };
-
+        //퍼즐 새로고침
+        puzzle.refresh = function () {
+            for(var i = 0; i < this.btnWord.length; i++){
+                document.getElementById("btn"+i).innerHTML = this.btnWord[i];
+            }
+            if(this.word === this.btnWord.join('')){
+                document.getElementById('check').innerHTML = '일치 합니다.';
+            }else{
+                document.getElementById('check').innerHTML = '일치하지 않습니다.';
+            }
+        };
+        
+        //버튼객체 생성
+        var button = {};
+        //버튼뒤집기 핸들러
         button.insideOut = function () {
-            console.log("뒤집기 얍얍얍");
+            var temp = [];
+            for(var i = 0; i < puzzle.btnWord.length; i++){
+                temp[i] = puzzle.btnWord[4-i];
+            }
+            puzzle.btnWord = temp.slice();
+            puzzle.refresh();
+        };
+        //버튼 오른쪽으로 미는 핸들러
+        button.rightPush = function () {
+            puzzle.btnWord.unshift(puzzle.btnWord.pop());
+            puzzle.refresh();
+        };
+        //버튼 왼쪽으로 미는 핸들러
+        button.leftPush = function () {
+            puzzle.btnWord.push(puzzle.btnWord.shift());
+            puzzle.refresh();
         };
 
-        button.push = function () {
-            console.log("밀어내기 츗츗츗");
-        };
-
-        input('HELLO');
-        button.init();
+        puzzle.btnInit();
     </script>
 </body>
 
