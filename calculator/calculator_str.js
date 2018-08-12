@@ -25,7 +25,7 @@ cal.cleanUp = function (str) {
         }
     }
     this.cleaned.push(str.slice(startI, str.length));
-}
+};
 
 cal.culator = function () {
     cal.question = document.getElementById('in').value;
@@ -48,4 +48,4 @@ cal.culator = function () {
         }
     }
     document.getElementById('answer').innerHTML = num;
-}
+};
