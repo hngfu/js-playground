@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>퍼즐 구현 1: 레이아웃 구성</title>
+    <style>
+        button {
+            font-size: 19px;
+            padding: 10px;
+            margin: 6px;
+        }
+    </style>
 </head>
 
 <body>
@@ -13,6 +20,12 @@
     <div id='puzzleArea'>
         <h2 id='word'></h2>
     </div>
+    <div id="handler">
+        <button onclick="button.insideOut()">뒤집기</button>
+        <button onclick="button.push()">밀어내기</button>
+    </div>
+    <p>일치합니다.</p>
+
     <script>
         function input(str) {
             var word = document.getElementById('word');
@@ -21,18 +34,27 @@
 
         var button = {};
         button.word = "";
-        button.make = function () {
+        button.btn = [];
+        button.init = function () {
             var word = document.getElementById('word').innerHTML;
             var puzzleArea = document.getElementById('puzzleArea');
             for (var i = 0; i < word.length; i++) {
-                document.createElement("button").innerHTML = word[i];
-                puzzleArea.appendChild();
+                this.btn[i] = document.createElement("button");
+                this.btn[i].innerHTML = word[i];
+                puzzleArea.appendChild(this.btn[i]);
             }
-            console.log(word.length);
-        }
+        };
 
-        input('Hello');
-        button.make();
+        button.insideOut = function () {
+            console.log("뒤집기 얍얍얍");
+        };
+
+        button.push = function () {
+            console.log("밀어내기 츗츗츗");
+        };
+
+        input('HELLO');
+        button.init();
     </script>
 </body>
 
