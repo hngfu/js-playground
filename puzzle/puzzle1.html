@@ -35,8 +35,6 @@
     <script>
         //퍼즐객체 생성
         var puzzle = {};
-        // puzzle.word = puzzle.ranWord;
-        // puzzle.btnWord = puzzle.word.split("");
 
         //랜덤 단어 선택
         puzzle.ranWord = function () {
@@ -44,7 +42,7 @@
             var ranWord = word[Math.floor(Math.random() * 10)];
             document.getElementById('word').innerHTML = ranWord;
             this.word = ranWord;
-            this.btnWord = button.shuffle(ranWord).split("");
+            this.btnWord = this.word.split("");
         };
 
         //퍼즐 초기화
@@ -58,7 +56,7 @@
                 mkBtn[i].id = 'btn' + i;
                 getArea.appendChild(mkBtn[i]);
             }
-            this.check();
+            button.shuffle();
         };
         //퍼즐 새로고침
         puzzle.refresh = function () {
@@ -98,15 +96,14 @@
             puzzle.refresh();
         };
         //단어 위치 섞기
-        button.shuffle = function (str) {
-            var temp1 = [];
-            var temp2 = str.split("");
-            var i = 0;
-            while (temp2.length > 0) {
-                temp1[i] = temp2.splice(Math.floor(Math.random() * temp2.length), 1)[0];
-                i++;
+        button.shuffle = function () {
+            if(Math.floor(Math.random()*2)){
+                this.insideOut();
             }
-            return temp1.join("");
+            var ranNum = Math.floor(Math.random() * puzzle.word.length);
+            for(var i = 0; i < ranNum; i++){
+                this.rightPush();
+            }
         };
 
         puzzle.btnInit();
