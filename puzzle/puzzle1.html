@@ -39,6 +39,8 @@
         //퍼즐객체 생성
         var puzzle = {};
 
+        puzzle.time = Date.now();
+
         //랜덤 단어 선택
         puzzle.ranWord = function () {
             var word = ['CODESQUAD', 'hngfu', 'javascript', 'HTML', 'CSS', 'ios', 'android', 'AMAZON', 'GOOGLE', 'APPLE'];
@@ -61,6 +63,7 @@
             }
             button.shuffle();
         };
+
         //퍼즐 새로고침
         puzzle.refresh = function () {
             for (var i = 0; i < this.btnWord.length; i++) {
@@ -69,6 +72,7 @@
             this.check();
         };
 
+        //퍼즐이 맞는지 확인
         puzzle.check = function () {
             if (this.word === this.btnWord.join('')) {
                 document.getElementById('check').innerHTML = '일치 합니다.';
@@ -80,15 +84,17 @@
             }
         };
 
+        //퍼즐 심판 - 게임 클리어 횟수와 종료 표시
         puzzle.judge = function () {
             var judge = document.getElementById('judge');
             judge.innerHTML += ' O ';
             if(judge.innerHTML === ' O  O  O '){
-                alert('Thank you for playing!')
+                alert('Thank you for playing!\n클리어 하시는데 걸리 시간은'+(Date.now()-this.time)/1000+"초 입니다.");
             }
             console.log(judge.innerHTML);
         }
 
+        //퍼즐 초기화 전에 버튼 지우기
         puzzle.remove = function () {
             for (var i = 0; i < this.btnWord.length; i++) {
                 var getArea = document.getElementById('puzzleArea');
@@ -96,8 +102,10 @@
                 getArea.removeChild(btnId);
             }
         }
+
         //버튼객체 생성
         var button = {};
+
         //버튼뒤집기 핸들러
         button.insideOut = function () {
             var temp = [];
@@ -107,23 +115,26 @@
             puzzle.btnWord = temp.slice();
             puzzle.refresh();
         };
+
         //버튼 오른쪽으로 미는 핸들러
         button.rightPush = function () {
             puzzle.btnWord.unshift(puzzle.btnWord.pop());
             puzzle.refresh();
         };
+
         //버튼 왼쪽으로 미는 핸들러
         button.leftPush = function () {
             puzzle.btnWord.push(puzzle.btnWord.shift());
             puzzle.refresh();
         };
+
         //단어 위치 섞기
         button.shuffle = function () {
             if (Math.floor(Math.random() * 2)) {
                 this.insideOut();
             }
             var ranNum = Math.floor(Math.random() * puzzle.word.length);
-            for (var i = 0; i < ranNum; i++) {
+            for (var i = 1; i < ranNum; i++) {
                 this.rightPush();
             }
         };
