@@ -88,10 +88,9 @@
         puzzle.judge = function () {
             var judge = document.getElementById('judge');
             judge.innerHTML += ' O ';
-            if(judge.innerHTML === ' O  O  O '){
-                alert('Thank you for playing!\n클리어 하시는데 걸리 시간은'+(Date.now()-this.time)/1000+"초 입니다.");
+            if (judge.innerHTML === ' O  O  O ') {
+                alert('Thank you for playing!\n클리어 하시는데 걸린 시간은' + (Date.now() - this.time) / 1000 + "초 입니다.");
             }
-            console.log(judge.innerHTML);
         }
 
         //퍼즐 초기화 전에 버튼 지우기
@@ -133,9 +132,21 @@
             if (Math.floor(Math.random() * 2)) {
                 this.insideOut();
             }
-            var ranNum = Math.floor(Math.random() * puzzle.word.length);
-            for (var i = 1; i < ranNum; i++) {
+            ranNum = this.strictShuffle();
+            for (var i = 0; i < ranNum; i++) {
                 this.rightPush();
+            }
+        };
+
+        //셔플 일치 완전 방지용 검사
+        button.strictShuffle = function () {
+            while (true) {
+                var ranNum = Math.floor(Math.random() * puzzle.btnWord.length);
+                if (ranNum / puzzle.btnWord.length === 0) {
+                    continue;
+                } else {
+                    return ranNum;
+                }
             }
         };
 
